@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.4 (swiftlang-1205.0.26.9 clang-1205.0.19.55)
+// swift-compiler-version: Apple Swift version 5.4.2 (swiftlang-1205.0.28.2 clang-1205.0.19.57)
 // swift-module-flags: -target x86_64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name CrowdConnectedShared
 import CoreMotion
 @_exported import CrowdConnectedShared
@@ -24,12 +24,11 @@ public enum ReactiveNotification : Swift.String {
   case newDevicePedometerAuthorizationStatus
   case ipsModuleState
   case geoModuleState
-  case startNavigation
-  case stopNavigation
   case startLibrary
   case stopLibrary
   case newRemoteLog
   case significantClockUpdate
+  case updateTrackingMode
   public var name: Foundation.NSNotification.Name {
     get
   }
@@ -160,6 +159,15 @@ public enum PositionDataType : Swift.String {
     get
   }
 }
+public enum TrackingMode : Swift.Int {
+  case navigationOnly
+  case background
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
 extension Float {
   public func cutToDecimals(_ decimalsNumber: Swift.Int) -> Swift.Double
 }
@@ -184,3 +192,6 @@ extension CrowdConnectedShared.DataType : Swift.Hashable {}
 extension CrowdConnectedShared.PositionDataType : Swift.Equatable {}
 extension CrowdConnectedShared.PositionDataType : Swift.Hashable {}
 extension CrowdConnectedShared.PositionDataType : Swift.RawRepresentable {}
+extension CrowdConnectedShared.TrackingMode : Swift.Equatable {}
+extension CrowdConnectedShared.TrackingMode : Swift.Hashable {}
+extension CrowdConnectedShared.TrackingMode : Swift.RawRepresentable {}
