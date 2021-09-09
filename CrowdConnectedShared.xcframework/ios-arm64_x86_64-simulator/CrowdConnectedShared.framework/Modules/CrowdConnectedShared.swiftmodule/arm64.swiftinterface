@@ -28,6 +28,7 @@ public enum ReactiveNotification : Swift.String {
   case stopLibrary
   case newRemoteLog
   case significantClockUpdate
+  case newCredentials
   case updateTrackingMode
   public var name: Foundation.NSNotification.Name {
     get
