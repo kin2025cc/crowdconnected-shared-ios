@@ -15,9 +15,11 @@ public enum ReactiveNotification : Swift.String {
   case updateBeacons
   case updateSurfaces
   case updatePositioningParameters
+  case updateBluetoothSettings
   case newPositionsAvailable
   case newStepsAvailable
   case newBluetoothObservationsAvailable
+  case receivedEddystoneObservation
   case newDeviceLocationAuthorizationStatus
   case newDeviceAccuracyAuthorizationStatus
   case newDeviceMotionAuthorizationStatus
