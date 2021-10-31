@@ -1,10 +1,11 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.4.2 (swiftlang-1205.0.28.2 clang-1205.0.19.57)
+// swift-compiler-version: Apple Swift version 5.5 (swiftlang-1300.0.31.1 clang-1300.0.29.1)
 // swift-module-flags: -target arm64-apple-ios12.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name CrowdConnectedShared
 import CoreMotion
 @_exported import CrowdConnectedShared
 import Foundation
 import Swift
+import _Concurrency
 @_hasMissingDesignatedInitializers public class MainLogger {
   public static func log(level: CrowdConnectedShared.LogLevel, message: @autoclosure () -> Swift.String)
   public static func log(level: CrowdConnectedShared.LogLevel, error: CrowdConnectedShared.DescriptiveError)
@@ -66,7 +67,7 @@ public enum LogLevel : Swift.String, Swift.CaseIterable {
     get
   }
 }
-extension Double {
+extension Swift.Double {
   public func radianToDegree() -> Swift.Double
   public func roundTo4thDecimal() -> Swift.Double
   public func roundToDecimals(_ decimalNumber: Swift.Int) -> Swift.Double
@@ -85,10 +86,10 @@ public protocol TimeSynchroniser {
   public func matchingDate(for logItem: CoreMotion.CMLogItem) -> Foundation.Date
   @objc deinit
 }
-extension Array {
+extension Swift.Array {
   public func chunked(into size: Swift.Int) -> [[Element]]
 }
-extension Date {
+extension Foundation.Date {
   public func secondsSince(date: Foundation.Date) -> Foundation.TimeInterval
   public func milliseconds() -> Swift.Int64
   public func nanoseconds() -> Swift.Int64
@@ -137,7 +138,7 @@ public protocol ReactiveNotificationsProtocol {
   func removeObserver(_ observer: Any, for notification: CrowdConnectedShared.ReactiveNotification)
   func getState(of notification: CrowdConnectedShared.ReactiveNotification) -> Self.NotificationData
 }
-extension ReactiveNotificationsProtocol {
+extension CrowdConnectedShared.ReactiveNotificationsProtocol {
   public func post(notification: CrowdConnectedShared.ReactiveNotification)
 }
 public enum DataType {
@@ -171,7 +172,7 @@ public enum TrackingMode : Swift.Int {
     get
   }
 }
-extension Float {
+extension Swift.Float {
   public func cutToDecimals(_ decimalsNumber: Swift.Int) -> Swift.Double
 }
 public protocol DescribingError {
