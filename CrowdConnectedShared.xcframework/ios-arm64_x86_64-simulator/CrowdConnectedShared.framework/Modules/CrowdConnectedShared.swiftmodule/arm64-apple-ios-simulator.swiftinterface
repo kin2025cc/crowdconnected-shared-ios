@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.5 (swiftlang-1300.0.31.1 clang-1300.0.29.1)
+// swift-compiler-version: Apple Swift version 5.5.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)
 // swift-module-flags: -target arm64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name CrowdConnectedShared
 import CoreMotion
 @_exported import CrowdConnectedShared
@@ -16,7 +16,9 @@ public enum ReactiveNotification : Swift.String {
   case updateBeacons
   case updateSurfaces
   case updatePositioningParameters
+  case updateMonitoredRegions
   case updateBluetoothSettings
+  case updateGeoSettings
   case newPositionsAvailable
   case newStepsAvailable
   case newBluetoothObservationsAvailable
@@ -29,9 +31,17 @@ public enum ReactiveNotification : Swift.String {
   case geoModuleState
   case startLibrary
   case stopLibrary
+  case startNavigationSession
+  case endNavigationSession
   case newRemoteLog
   case significantClockUpdate
   case newCredentials
+  case updateDataPublishRule
+  case startMonitoringRegions
+  case stopMonitoringRegions
+  case determineStateForMonitoredRegions
+  case didEnterRegion
+  case didExitRegion
   case updateTrackingMode
   public var name: Foundation.NSNotification.Name {
     get
@@ -123,6 +133,16 @@ extension Foundation.Date {
   public func getState(of notification: CrowdConnectedShared.ReactiveNotification) -> CrowdConnectedShared.ReactiveNotificationsCenter.NotificationData
   @objc deinit
 }
+public enum CrowdConnectedDecodingError : Swift.Error, CrowdConnectedShared.DescribingError {
+  case decodingFailed(message: Swift.String)
+  case typeNotMatching(key: Swift.String)
+  case valueNotMatching(type: Swift.String, key: Swift.String)
+  case other(error: Swift.Error)
+  public var descriptiveError: CrowdConnectedShared.DescriptiveError {
+    get
+  }
+  public static func extractDecodingError(_ error: Swift.Error) -> CrowdConnectedShared.CrowdConnectedDecodingError
+}
 public protocol Clock {
   func currentDate() -> Foundation.Date
   func currentTimeInMilliseconds() -> Swift.Int64
@@ -164,8 +184,9 @@ public enum PositionDataType : Swift.String {
   }
 }
 public enum TrackingMode : Swift.Int {
-  case navigationOnly
+  case foreground
   case background
+  case deactivated
   public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
@@ -174,6 +195,45 @@ public enum TrackingMode : Swift.Int {
 }
 extension Swift.Float {
   public func cutToDecimals(_ decimalsNumber: Swift.Int) -> Swift.Double
+}
+public enum CrowdConnectedWrapperKey : Swift.String {
+  case string
+  case number
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct StringCodingKey {
+  public init(codingKey: Swift.CodingKey, rawKey: Swift.String)
+}
+public protocol CrowdConnectedCodable : Swift.Decodable, Swift.Encodable {
+  static func getStringValue<T>(for key: CrowdConnectedShared.StringCodingKey, from container: Swift.KeyedDecodingContainer<T>, wrapperKey: CrowdConnectedShared.CrowdConnectedWrapperKey) throws -> Swift.String where T : Swift.CodingKey
+  static func getIntValue<T>(for key: CrowdConnectedShared.StringCodingKey, from container: Swift.KeyedDecodingContainer<T>, wrapperKey: CrowdConnectedShared.CrowdConnectedWrapperKey) throws -> Swift.Int where T : Swift.CodingKey
+  static func getDoubleValue<T>(for key: CrowdConnectedShared.StringCodingKey, from container: Swift.KeyedDecodingContainer<T>, wrapperKey: CrowdConnectedShared.CrowdConnectedWrapperKey) throws -> Swift.Double where T : Swift.CodingKey
+  static func getOptionalIntValue<T>(for key: CrowdConnectedShared.StringCodingKey, from container: Swift.KeyedDecodingContainer<T>, wrapperKey: CrowdConnectedShared.CrowdConnectedWrapperKey) -> Swift.Int? where T : Swift.CodingKey
+  static func getOptionalDoubleValue<T>(for key: CrowdConnectedShared.StringCodingKey, from container: Swift.KeyedDecodingContainer<T>, wrapperKey: CrowdConnectedShared.CrowdConnectedWrapperKey) -> Swift.Double? where T : Swift.CodingKey
+}
+extension CrowdConnectedShared.CrowdConnectedCodable {
+  public static func getStringValue<T>(for key: CrowdConnectedShared.StringCodingKey, from container: Swift.KeyedDecodingContainer<T>, wrapperKey: CrowdConnectedShared.CrowdConnectedWrapperKey = .string) throws -> Swift.String where T : Swift.CodingKey
+  public static func getIntValue<T>(for key: CrowdConnectedShared.StringCodingKey, from container: Swift.KeyedDecodingContainer<T>, wrapperKey: CrowdConnectedShared.CrowdConnectedWrapperKey = .number) throws -> Swift.Int where T : Swift.CodingKey
+  public static func getDoubleValue<T>(for key: CrowdConnectedShared.StringCodingKey, from container: Swift.KeyedDecodingContainer<T>, wrapperKey: CrowdConnectedShared.CrowdConnectedWrapperKey = .number) throws -> Swift.Double where T : Swift.CodingKey
+  public static func getOptionalStringValue<T>(for key: CrowdConnectedShared.StringCodingKey, from container: Swift.KeyedDecodingContainer<T>, wrapperKey: CrowdConnectedShared.CrowdConnectedWrapperKey = .string) -> Swift.String? where T : Swift.CodingKey
+  public static func getOptionalIntValue<T>(for key: CrowdConnectedShared.StringCodingKey, from container: Swift.KeyedDecodingContainer<T>, wrapperKey: CrowdConnectedShared.CrowdConnectedWrapperKey = .number) -> Swift.Int? where T : Swift.CodingKey
+  public static func getOptionalDoubleValue<T>(for key: CrowdConnectedShared.StringCodingKey, from container: Swift.KeyedDecodingContainer<T>, wrapperKey: CrowdConnectedShared.CrowdConnectedWrapperKey = .number) -> Swift.Double? where T : Swift.CodingKey
+}
+public struct DataPublishRule : Swift.Codable, Swift.Hashable {
+  public init(shouldPublishPositionData: Swift.Bool, shouldPublishRawObservationData: Swift.Bool)
+  public var shouldPublishPositionData: Swift.Bool
+  public var shouldPublishRawObservationData: Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public static func == (a: CrowdConnectedShared.DataPublishRule, b: CrowdConnectedShared.DataPublishRule) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public var hashValue: Swift.Int {
+    get
+  }
+  public init(from decoder: Swift.Decoder) throws
 }
 public protocol DescribingError {
   var descriptiveError: CrowdConnectedShared.DescriptiveError { get }
@@ -199,3 +259,6 @@ extension CrowdConnectedShared.PositionDataType : Swift.RawRepresentable {}
 extension CrowdConnectedShared.TrackingMode : Swift.Equatable {}
 extension CrowdConnectedShared.TrackingMode : Swift.Hashable {}
 extension CrowdConnectedShared.TrackingMode : Swift.RawRepresentable {}
+extension CrowdConnectedShared.CrowdConnectedWrapperKey : Swift.Equatable {}
+extension CrowdConnectedShared.CrowdConnectedWrapperKey : Swift.Hashable {}
+extension CrowdConnectedShared.CrowdConnectedWrapperKey : Swift.RawRepresentable {}
