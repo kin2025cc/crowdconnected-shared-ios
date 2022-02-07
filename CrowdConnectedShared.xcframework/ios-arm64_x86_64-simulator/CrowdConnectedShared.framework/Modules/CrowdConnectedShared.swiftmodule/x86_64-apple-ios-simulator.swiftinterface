@@ -1,18 +1,17 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.5.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)
+// swift-compiler-version: Apple Swift version 5.4.2 (swiftlang-1205.0.28.2 clang-1205.0.19.57)
 // swift-module-flags: -target x86_64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name CrowdConnectedShared
 import CoreLocation
 import CoreMotion
 @_exported import CrowdConnectedShared
 import Foundation
 import Swift
-import _Concurrency
 @_hasMissingDesignatedInitializers public class MainLogger {
   public static func log(level: CrowdConnectedShared.LogLevel, message: @autoclosure () -> Swift.String)
   public static func log(level: CrowdConnectedShared.LogLevel, error: CrowdConnectedShared.DescriptiveError)
   @objc deinit
 }
-extension CoreLocation.CLLocationCoordinate2D : Swift.Equatable {
+extension CLLocationCoordinate2D : Swift.Equatable {
   public static func == (lhs: CoreLocation.CLLocationCoordinate2D, rhs: CoreLocation.CLLocationCoordinate2D) -> Swift.Bool
 }
 public enum ReactiveNotification : Swift.String {
@@ -82,7 +81,7 @@ public enum LogLevel : Swift.String, Swift.CaseIterable {
     get
   }
 }
-extension Swift.Double {
+extension Double {
   public func radianToDegree() -> Swift.Double
   public func roundTo4thDecimal() -> Swift.Double
   public func roundToDecimals(_ decimalNumber: Swift.Int) -> Swift.Double
@@ -101,10 +100,10 @@ public protocol TimeSynchroniser {
   public func matchingDate(for logItem: CoreMotion.CMLogItem) -> Foundation.Date
   @objc deinit
 }
-extension Swift.Array {
+extension Array {
   public func chunked(into size: Swift.Int) -> [[Element]]
 }
-extension Foundation.Date {
+extension Date {
   public func secondsSince(date: Foundation.Date) -> Foundation.TimeInterval
   public func milliseconds() -> Swift.Int64
   public func nanoseconds() -> Swift.Int64
@@ -163,7 +162,7 @@ public protocol ReactiveNotificationsProtocol {
   func removeObserver(_ observer: Any, for notification: CrowdConnectedShared.ReactiveNotification)
   func getState(of notification: CrowdConnectedShared.ReactiveNotification) -> Self.NotificationData
 }
-extension CrowdConnectedShared.ReactiveNotificationsProtocol {
+extension ReactiveNotificationsProtocol {
   public func post(notification: CrowdConnectedShared.ReactiveNotification)
 }
 public enum DataType {
@@ -198,7 +197,7 @@ public enum TrackingMode : Swift.Int {
     get
   }
 }
-extension Swift.Float {
+extension Float {
   public func cutToDecimals(_ decimalsNumber: Swift.Int) -> Swift.Double
 }
 public enum CrowdConnectedConstants {
@@ -223,7 +222,7 @@ public protocol CrowdConnectedCodable : Swift.Decodable, Swift.Encodable {
   static func getOptionalIntValue<T>(for key: CrowdConnectedShared.StringCodingKey, from container: Swift.KeyedDecodingContainer<T>, wrapperKey: CrowdConnectedShared.CrowdConnectedWrapperKey) -> Swift.Int? where T : Swift.CodingKey
   static func getOptionalDoubleValue<T>(for key: CrowdConnectedShared.StringCodingKey, from container: Swift.KeyedDecodingContainer<T>, wrapperKey: CrowdConnectedShared.CrowdConnectedWrapperKey) -> Swift.Double? where T : Swift.CodingKey
 }
-extension CrowdConnectedShared.CrowdConnectedCodable {
+extension CrowdConnectedCodable {
   public static func getStringValue<T>(for key: CrowdConnectedShared.StringCodingKey, from container: Swift.KeyedDecodingContainer<T>, wrapperKey: CrowdConnectedShared.CrowdConnectedWrapperKey = .string) throws -> Swift.String where T : Swift.CodingKey
   public static func getIntValue<T>(for key: CrowdConnectedShared.StringCodingKey, from container: Swift.KeyedDecodingContainer<T>, wrapperKey: CrowdConnectedShared.CrowdConnectedWrapperKey = .number) throws -> Swift.Int where T : Swift.CodingKey
   public static func getDoubleValue<T>(for key: CrowdConnectedShared.StringCodingKey, from container: Swift.KeyedDecodingContainer<T>, wrapperKey: CrowdConnectedShared.CrowdConnectedWrapperKey = .number) throws -> Swift.Double where T : Swift.CodingKey
