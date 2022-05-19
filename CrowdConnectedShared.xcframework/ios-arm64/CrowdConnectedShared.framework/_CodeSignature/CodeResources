@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/CrowdConnectedShared-Swift.h</key>
 		<data>
-		ZzuUrCRSJTKo3FVWY+58nSVbJxE=
+		331rATbw1QMhaWmP0RHxJ5ZEjNg=
 		</data>
 		<key>Headers/CrowdConnectedShared.h</key>
 		<data>
@@ -14,31 +14,19 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		6/No04joBaH7r1KOhI3eOm29Lfc=
+		vjijHfOLtscKaPRwTjCujx+MSrE=
 		</data>
 		<key>Modules/CrowdConnectedShared.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
-		/DgGAFlYBwFf1kM6GB1iT8iz22I=
+		rcNYy9wyiHP16ozReunTMsWmF1Y=
 		</data>
 		<key>Modules/CrowdConnectedShared.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<data>
-		63tG99vsMWmhALRc+S6zsJ+AxyA=
+		oE4gbf5Zt9eAX1qXtY9L+iZ4vls=
 		</data>
 		<key>Modules/CrowdConnectedShared.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		y4Ygx1Ye7L7JZaglPjRVaQmIEIo=
-		</data>
-		<key>Modules/CrowdConnectedShared.swiftmodule/arm64.swiftdoc</key>
-		<data>
-		/DgGAFlYBwFf1kM6GB1iT8iz22I=
-		</data>
-		<key>Modules/CrowdConnectedShared.swiftmodule/arm64.swiftinterface</key>
-		<data>
-		63tG99vsMWmhALRc+S6zsJ+AxyA=
-		</data>
-		<key>Modules/CrowdConnectedShared.swiftmodule/arm64.swiftmodule</key>
-		<data>
-		y4Ygx1Ye7L7JZaglPjRVaQmIEIo=
+		TiRjHbNQcpjUkr3mh5sgr66NFJg=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -51,7 +39,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			3nOunlH+Ia35MF+KsFlwyaAVfqMpRfGNmE4vyavM7pE=
+			bHvXTEqNTl5/ak1xIJQiQD4xajnhHvjSq8055we5kJ8=
 			</data>
 		</dict>
 		<key>Headers/CrowdConnectedShared.h</key>
@@ -65,42 +53,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			EedDIhPdeg5vAZIGCnPpmkxTksJptCzwodxi96RRLLg=
+			PH2gmtlFIO+/SkJoikD6/jB1Y1holzMtgAuEoNuW6iQ=
 			</data>
 		</dict>
 		<key>Modules/CrowdConnectedShared.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			9O3fiijM/6H3hzDWNI1JROYlFykiZBryXwxfE9ef5As=
+			y7RuxrmD6dkUtRQ9CT74wA8SemFPq7iWuny7IT3zPvU=
 			</data>
 		</dict>
 		<key>Modules/CrowdConnectedShared.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			psQINiPlJoYzx0we6XyQyyE5uml2DkxGZ430M//EjAQ=
-			</data>
-		</dict>
-		<key>Modules/CrowdConnectedShared.swiftmodule/arm64.swiftdoc</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			EedDIhPdeg5vAZIGCnPpmkxTksJptCzwodxi96RRLLg=
-			</data>
-		</dict>
-		<key>Modules/CrowdConnectedShared.swiftmodule/arm64.swiftinterface</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			9O3fiijM/6H3hzDWNI1JROYlFykiZBryXwxfE9ef5As=
-			</data>
-		</dict>
-		<key>Modules/CrowdConnectedShared.swiftmodule/arm64.swiftmodule</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			psQINiPlJoYzx0we6XyQyyE5uml2DkxGZ430M//EjAQ=
+			DJrXufntSubiqVh/JkbTNNvu3FyhZZw+jbUbJWDRnCU=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

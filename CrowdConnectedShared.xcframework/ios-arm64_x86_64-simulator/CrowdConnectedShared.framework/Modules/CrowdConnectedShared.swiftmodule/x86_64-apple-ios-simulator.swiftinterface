@@ -1,17 +1,18 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.4.2 (swiftlang-1205.0.28.2 clang-1205.0.19.57)
+// swift-compiler-version: Apple Swift version 5.6.1 (swiftlang-5.6.0.323.66 clang-1316.0.20.12)
 // swift-module-flags: -target x86_64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name CrowdConnectedShared
 import CoreLocation
 import CoreMotion
 @_exported import CrowdConnectedShared
 import Foundation
 import Swift
+import _Concurrency
 @_hasMissingDesignatedInitializers public class MainLogger {
   public static func log(level: CrowdConnectedShared.LogLevel, message: @autoclosure () -> Swift.String)
   public static func log(level: CrowdConnectedShared.LogLevel, error: CrowdConnectedShared.DescriptiveError)
   @objc deinit
 }
-extension CLLocationCoordinate2D : Swift.Equatable {
+extension CoreLocation.CLLocationCoordinate2D : Swift.Equatable {
   public static func == (lhs: CoreLocation.CLLocationCoordinate2D, rhs: CoreLocation.CLLocationCoordinate2D) -> Swift.Bool
 }
 public enum ReactiveNotification : Swift.String {
@@ -81,7 +82,7 @@ public enum LogLevel : Swift.String, Swift.CaseIterable {
     get
   }
 }
-extension Double {
+extension Swift.Double {
   public func radianToDegree() -> Swift.Double
   public func roundTo4thDecimal() -> Swift.Double
   public func roundToDecimals(_ decimalNumber: Swift.Int) -> Swift.Double
@@ -100,10 +101,10 @@ public protocol TimeSynchroniser {
   public func matchingDate(for logItem: CoreMotion.CMLogItem) -> Foundation.Date
   @objc deinit
 }
-extension Array {
+extension Swift.Array {
   public func chunked(into size: Swift.Int) -> [[Element]]
 }
-extension Date {
+extension Foundation.Date {
   public func secondsSince(date: Foundation.Date) -> Foundation.TimeInterval
   public func milliseconds() -> Swift.Int64
   public func nanoseconds() -> Swift.Int64
@@ -162,7 +163,7 @@ public protocol ReactiveNotificationsProtocol {
   func removeObserver(_ observer: Any, for notification: CrowdConnectedShared.ReactiveNotification)
   func getState(of notification: CrowdConnectedShared.ReactiveNotification) -> Self.NotificationData
 }
-extension ReactiveNotificationsProtocol {
+extension CrowdConnectedShared.ReactiveNotificationsProtocol {
   public func post(notification: CrowdConnectedShared.ReactiveNotification)
 }
 public enum DataType {
@@ -181,6 +182,9 @@ public enum DataType {
 public enum PositionDataType : Swift.String {
   case geo
   case cartesian
+  public var exportValue: Swift.String {
+    get
+  }
   public init?(rawValue: Swift.String)
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
@@ -197,7 +201,7 @@ public enum TrackingMode : Swift.Int {
     get
   }
 }
-extension Float {
+extension Swift.Float {
   public func cutToDecimals(_ decimalsNumber: Swift.Int) -> Swift.Double
 }
 public enum CrowdConnectedConstants {
@@ -222,7 +226,7 @@ public protocol CrowdConnectedCodable : Swift.Decodable, Swift.Encodable {
   static func getOptionalIntValue<T>(for key: CrowdConnectedShared.StringCodingKey, from container: Swift.KeyedDecodingContainer<T>, wrapperKey: CrowdConnectedShared.CrowdConnectedWrapperKey) -> Swift.Int? where T : Swift.CodingKey
   static func getOptionalDoubleValue<T>(for key: CrowdConnectedShared.StringCodingKey, from container: Swift.KeyedDecodingContainer<T>, wrapperKey: CrowdConnectedShared.CrowdConnectedWrapperKey) -> Swift.Double? where T : Swift.CodingKey
 }
-extension CrowdConnectedCodable {
+extension CrowdConnectedShared.CrowdConnectedCodable {
   public static func getStringValue<T>(for key: CrowdConnectedShared.StringCodingKey, from container: Swift.KeyedDecodingContainer<T>, wrapperKey: CrowdConnectedShared.CrowdConnectedWrapperKey = .string) throws -> Swift.String where T : Swift.CodingKey
   public static func getIntValue<T>(for key: CrowdConnectedShared.StringCodingKey, from container: Swift.KeyedDecodingContainer<T>, wrapperKey: CrowdConnectedShared.CrowdConnectedWrapperKey = .number) throws -> Swift.Int where T : Swift.CodingKey
   public static func getDoubleValue<T>(for key: CrowdConnectedShared.StringCodingKey, from container: Swift.KeyedDecodingContainer<T>, wrapperKey: CrowdConnectedShared.CrowdConnectedWrapperKey = .number) throws -> Swift.Double where T : Swift.CodingKey
