@@ -1,7 +1,7 @@
 framework module CrowdConnectedShared {
   umbrella header "CrowdConnectedShared.h"
-
   export *
+
   module * { export * }
 }
 
