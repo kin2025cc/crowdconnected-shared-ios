@@ -81,7 +81,6 @@ public enum LogLevel : Swift.String, Swift.CaseIterable {
   case notice
   case error
   case critical
-  case remote
   public init?(rawValue: Swift.String)
   public typealias AllCases = [CrowdConnectedShared.LogLevel]
   public typealias RawValue = Swift.String

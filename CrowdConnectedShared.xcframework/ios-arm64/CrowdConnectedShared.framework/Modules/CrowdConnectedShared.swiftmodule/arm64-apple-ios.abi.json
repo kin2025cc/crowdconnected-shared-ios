@@ -2071,46 +2071,6 @@
             ]
           },
           {
-            "kind": "Var",
-            "name": "remote",
-            "printedName": "remote",
-            "children": [
-              {
-                "kind": "TypeFunc",
-                "name": "Function",
-                "printedName": "(CrowdConnectedShared.LogLevel.Type) -> CrowdConnectedShared.LogLevel",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "LogLevel",
-                    "printedName": "CrowdConnectedShared.LogLevel",
-                    "usr": "s:20CrowdConnectedShared8LogLevelO"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Metatype",
-                    "printedName": "CrowdConnectedShared.LogLevel.Type",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "LogLevel",
-                        "printedName": "CrowdConnectedShared.LogLevel",
-                        "usr": "s:20CrowdConnectedShared8LogLevelO"
-                      }
-                    ]
-                  }
-                ]
-              }
-            ],
-            "declKind": "EnumElement",
-            "usr": "s:20CrowdConnectedShared8LogLevelO6remoteyA2CmF",
-            "mangledName": "$s20CrowdConnectedShared8LogLevelO6remoteyA2CmF",
-            "moduleName": "CrowdConnectedShared",
-            "declAttributes": [
-              "RawDocComment"
-            ]
-          },
-          {
             "kind": "Constructor",
             "name": "init",
             "printedName": "init(rawValue:)",
@@ -13881,70 +13841,63 @@
     {
       "filePath": "\/Users\/tcode\/CC\/ColocatorV3iOS\/ColocatorShared\/CrowdConnectedShared\/Logging\/ConsoleLogger.swift",
       "kind": "StringLiteral",
-      "offset": 1258,
+      "offset": 1250,
       "length": 6,
       "value": "\"🛠\""
     },
     {
       "filePath": "\/Users\/tcode\/CC\/ColocatorV3iOS\/ColocatorShared\/CrowdConnectedShared\/Logging\/ConsoleLogger.swift",
       "kind": "StringLiteral",
-      "offset": 1292,
+      "offset": 1284,
       "length": 8,
       "value": "\"⚙️\""
     },
     {
       "filePath": "\/Users\/tcode\/CC\/ColocatorV3iOS\/ColocatorShared\/CrowdConnectedShared\/Logging\/ConsoleLogger.swift",
       "kind": "StringLiteral",
-      "offset": 1330,
+      "offset": 1322,
       "length": 6,
       "value": "\"📤\""
     },
     {
       "filePath": "\/Users\/tcode\/CC\/ColocatorV3iOS\/ColocatorShared\/CrowdConnectedShared\/Logging\/ConsoleLogger.swift",
       "kind": "StringLiteral",
-      "offset": 1365,
+      "offset": 1357,
       "length": 5,
       "value": "\"❌\""
     },
     {
       "filePath": "\/Users\/tcode\/CC\/ColocatorV3iOS\/ColocatorShared\/CrowdConnectedShared\/Logging\/ConsoleLogger.swift",
       "kind": "StringLiteral",
-      "offset": 1402,
+      "offset": 1394,
       "length": 6,
       "value": "\"🙉\""
     },
     {
       "filePath": "\/Users\/tcode\/CC\/ColocatorV3iOS\/ColocatorShared\/CrowdConnectedShared\/Logging\/ConsoleLogger.swift",
       "kind": "StringLiteral",
-      "offset": 1438,
-      "length": 6,
-      "value": "\"💾\""
-    },
-    {
-      "filePath": "\/Users\/tcode\/CC\/ColocatorV3iOS\/ColocatorShared\/CrowdConnectedShared\/Logging\/ConsoleLogger.swift",
-      "kind": "StringLiteral",
-      "offset": 1611,
+      "offset": 1567,
       "length": 24,
       "value": "\"com.crowdconnected.SDK\""
     },
     {
       "filePath": "\/Users\/tcode\/CC\/ColocatorV3iOS\/ColocatorShared\/CrowdConnectedShared\/Logging\/ConsoleLogger.swift",
       "kind": "StringLiteral",
-      "offset": 1647,
+      "offset": 1603,
       "length": 12,
       "value": "\"SDKLogging\""
     },
     {
       "filePath": "\/Users\/tcode\/CC\/ColocatorV3iOS\/ColocatorShared\/CrowdConnectedShared\/Logging\/ConsoleLogger.swift",
       "kind": "StringLiteral",
-      "offset": 1803,
+      "offset": 1759,
       "length": 32,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/tcode\/CC\/ColocatorV3iOS\/ColocatorShared\/CrowdConnectedShared\/Logging\/ConsoleLogger.swift",
       "kind": "StringLiteral",
-      "offset": 1834,
+      "offset": 1790,
       "length": 2,
       "value": "\"\""
     },
